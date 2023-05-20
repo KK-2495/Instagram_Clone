@@ -7,7 +7,7 @@
     <title>Add a Story</title>
 </head>
 <body>
-    <h2>Add your Post here</h2>
+    <h2>Add your Story here</h2>
     <form onsubmit="addPost(event)">
         <label>Story Name</label><br />
         <input type="text" id="storyName" /><br />
@@ -27,6 +27,14 @@
 
             localStorage.setItem("instaStory",JSON.stringify(addStory));
 
+
+
+            let insta_currentUser= JSON.parse(localStorage.getItem("instaCurrentUser"));
+            let insta_userData = JSON.parse(localStorage.getItem("instaUsers"));
+            // let story;
+            if(insta_currentUser[i].iEmail == insta_userData[i].iEmail){
+                console.log(insta_userData.iStory);
+            }
             alert("Story Added Succesfully");
         }
     </script>
