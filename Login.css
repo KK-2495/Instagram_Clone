@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.screen{
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+.main{
+    display: flex;
+    width: 70%;
+    /* border: 2px solid red; */
+}
+.instaImage{
+    width: 50%;
+    padding: 30px;
+}
+.instaImage img{
+    width: 100%;
+}
+.form{
+    width: 50%;
+    border: 1px solid gray;
+    padding: 20px 60px;
+}
+.instaLogo {
+    text-align: center;
+}
+.instaLogo img{
+    width: 70%;
+}
+.form h3{
+    text-align: center;
+    color: gray;
+}
+.register input{
+    width: 100%;
+    padding: 10px;
+    margin-top: 2%;
+    outline: none;
+    border: 1px solid gray;
+    border-radius: 3px;
+    background-color: rgb(245, 245, 245);
+}
+.register p{
+    font-size: 13px;
+    text-align: center;
+    margin-top: 5%;
+}
+.register input[type=submit] {
+    background-color: #4cb5f9;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 20px;
+    border: none;
+    margin-top: 5%;
+}
+.login{
+    margin-top: 5%;
+    text-align: center;
+}
+.login b{
+    color: #0f94ee;
+    font-weight: 500;
+}
+.download{
+    text-align: center;
+    margin-top: 5%;
+}
+.downloadImage{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5%;
+}
+.downloadImage img{
+    width: 45%;
+}
+
+@media screen and (max-width:770px) {
+    .instaImage{
+        display: none;
+    }
+    .form{
+        width: 100%;
+    }
+}

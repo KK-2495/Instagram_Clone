@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Instagram</title>
+        <link rel="stylesheet" href="./HomePage.css">
+        <script src="https://kit.fontawesome.com/3f7f3f9444.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div class="screen">
+            <div class="navBar">
+                <div class="logo">
+                    <img src="https://1000logos.net/wp-content/uploads/2017/02/Instagram-Logo-2010-2013-768x432.png"
+                        alt="log" />
+                </div>
+                <div class="navBarList">
+                    <div class="navBarOptions">
+                        <i class="fa-solid fa-house"></i>
+                        <p>Home</p>
+                    </div>
+                    <div class="navBarOptions">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <p>Search</p>
+                    </div>
+                    <div class="navBarOptions">
+                        <i class="fa-solid fa-compass"></i>
+                        <p>Explore</p>
+                    </div>
+                    <div class="navBarOptions">
+                        <i class="fa-solid fa-film"></i>
+                        <p>Reels</p>
+                    </div>
+                    <div class="navBarOptions">
+                        <i class="fa-brands fa-facebook-messenger"></i>
+                        <p>Messages</p>
+                    </div>
+                    <div class="navBarOptions">
+                        <i class="fa-regular fa-heart"></i>
+                        <p>Notifications</p>
+                    </div>
+                    <div class="navBarOptions">
+                        <i class="fa-solid fa-square-plus"></i>
+                        <p>Create</p>
+                    </div>
+                    <div class="navBarOptions">
+                        <i class="fa-regular fa-user"></i>
+                        <p>Profile</p>
+                    </div>
+                    <div class="navBarOptions">
+                        <i class="fa-solid fa-bars"></i>
+                        <p>More</p>
+                    </div>
+                </div>
+            </div>
+            <div class="main">
+                <div class="content">
+                    <div class="story">
+                        <div class="stories">
+                            <div id="storyImage">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="story" />
+                            </div>
+                            <p id="storyName">UserName</p>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <div class="posterName">
+                            <div class="posterImage">
+                                <i class="fa-regular fa-user"></i>
+                                <div class="posterInfo">
+                                    <p id="postName">name</p>
+                                    <small>location</small>
+                                </div>
+                            </div>
+                            <div class="postOptions">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                        </div>
+                        <div id="postImage" class="postImage">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFN5iwAHFlbfHDcpvht4j_ONtZHbMNiNCfFg&usqp=CAU"
+                                alt="posts" />
+                        </div>
+                        <div class="postLikes">
+                            <div class="likeComment">
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-regular fa-comment fa-flip-horizontal"></i>
+                                <i class="fa-regular fa-paper-plane"></i>
+                            </div>
+                            <div class="save"><i class="fa-regular fa-bookmark"></i></div>
+                        </div>
+                        <div class="postCaptions">
+                            <b id="postName">User</b>
+                            <p id="postCaption">Try to Love yourself, Little more, Everyday</p>
+                        </div>
+                        <div class="viewComment">
+                            <b>View 3 comments</b>
+                        </div>
+                        <div class="addComment">
+                            <i class="fa-regular fa-face-smile"></i>
+                            <input type="text" placeholder="Add a Comment" />
+                            <b>Post</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="suggestions">
+                    <div class="userInfo">
+                        <div class="user">
+                            <i class="fa-regular fa-user"></i>
+                            <p id="userSwitch">user Name</p>
+                        </div>
+                        <div id="logout" class="follow">
+                            Switch
+                        </div>
+                    </div>
+                    <div class="addFollower">
+                        <div class="suggested">
+                            <h3>Suggested for you</h3>
+                            <b>See All</b>
+                        </div>
+                    </div>
+                    <div class="suggestedUserInfo">
+                        <div class="suggestedUser">
+                            <i class="fa-regular fa-user"></i>
+                            <p>Abhi</p>
+                        </div>
+                        <div class="follow">
+                            Follow
+                        </div>
+                    </div>
+                    <div class="suggestedUserInfo">
+                        <div class="suggestedUser">
+                            <i class="fa-regular fa-user"></i>
+                            <p>Vrushab</p>
+                        </div>
+                        <div class="follow">
+                            Follow
+                        </div>
+                    </div>
+                    <div class="suggestedUserInfo">
+                        <div class="suggestedUser">
+                            <i class="fa-regular fa-user"></i>
+                            <p>user Name</p>
+                        </div>
+                        <div class="follow">
+                            Follow
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            window.onload = function () {
+                var currentUser = JSON.parse(localStorage.getItem("instaCurrentUser"));
+                if (currentUser) {
+                    var showName = document.getElementById("userSwitch");
+                    var logoutswitch = document.getElementById("logout");
+                    var activeUserName = `<h3>${currentUser.iName}</h3>`;
+                    var logout = `<button onclick="logout()">Log Out</button>`;
+                    showName.innerHTML = activeUserName;
+                    logoutswitch.innerHTML = logout;
+                } else {
+                    alert("You've Logged out.");
+                }
+                // *********Add post********
+                var displayImage = document.getElementById("postImage");
+                var postImage = "";
+                var displayName = document.getElementById("postName");
+                var postName = "";
+                var displayCaption = document.getElementById("postCaption");
+                var postCaption = "";
+
+                var postBackend = JSON.parse(localStorage.getItem("posts"));
+                for (var i = 0; i < postBackend.length; i++) {
+                    postImage += `<div class="postImage"><img src="${postBackend[i].postImage}"/></div>`;
+                    postName += `<b>${postBackend[i].postName}</b>`;
+                    postCaption += `<p>${postBackend[i].postCaption}</p>`;
+                }
+                displayImage.innerHTML = postImage;
+                displayName.innerHTML = postName;
+                displayCaption.innerHTML = postCaption;
+
+                // *********Add Story********
+                var displayStoryImage = document.getElementById("storyImage");
+                var storyImage = "";
+                var displayStoryName = document.getElementById("storyName");
+                var storyName = "";
+
+
+                var storyBackend = JSON.parse(localStorage.getItem("instaStory"));
+                for (var i = 0; i < storyBackend.length; i++) {
+                    storyImage += `<div><img src="${storyBackend[i].storyImage}"/></div>`;
+                    storyName += `<p>${storyBackend[i].storyName}</p>`;
+                    
+                }
+                displayStoryImage.innerHTML = storyImage;
+                displayStoryName.innerHTML = storyName;
+
+            }
+
+            function logout() {
+                localStorage.removeItem("instaCurrentUser");
+                window.location.reload();
+            }
+        </script>
+    </body>
+
+</html>

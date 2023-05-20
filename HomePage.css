@@ -1,0 +1,198 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.screen{
+    background-color: #fafafa;
+    /* height: 2000px; */
+}
+.navBar{
+    background-color: white;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    width: 20%;
+    border-right: 1px solid lightgray;
+    padding: 25px;
+}
+
+.logo img {
+    width: 60%;
+}
+.navBarList{
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.navBarOptions{
+    display: flex;
+    font-size: 22px;
+}
+.navBarOptions p{
+    padding-left: 25px;
+}
+.main{
+    /* border: 2px solid orange; */
+    /* height: 500px; */
+    width: 80%;
+    margin-left: auto;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 30px;
+}
+.content{
+    width: 50%;
+    /* border: 1px solid black; */
+
+}
+.story{
+    display: flex;
+    border: 1px solid gray;
+    border-radius: 10px;
+    background-color: white;
+    text-align: center;
+}
+.stories{
+    width: 20%;
+    padding: 10px;
+}
+.stories img{
+    width: 100%;
+    border: 3px solid rgb(234, 62, 191);
+    border-radius: 50%;
+    padding: 3px;
+}
+.suggestions{
+    width: 35%;
+    /* border: 1px solid black; */
+}
+.userInfo{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding: 20px;
+    align-items: center;
+}
+.user{
+    /* width: 50%; */
+    display: flex;
+    /* justify-content: space-between; */
+    font-size: 20px;
+    align-items: center;
+}
+.user p{
+    padding-left: 10px;
+}
+.user i{
+    border: 1px solid gray;
+    padding: 15px;
+    border-radius: 50%;
+}
+.follow{
+    color: rgb(119, 119, 232);
+    font-weight: bold;
+}
+.addFollower{
+    padding: 20px;
+}
+.suggested{
+    display: flex;
+    justify-content: space-between;
+    color: gray;
+}
+.suggestedUserInfo{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding: 5px 20px;
+    align-items: center;
+}
+.suggestedUser{
+    width: 50%;
+    display: flex;
+    /* justify-content: space-between; */
+    font-size: 15px;
+    align-items: center;
+    
+}
+.suggestedUser i{
+    border: 1px solid gray;
+    padding: 15px;
+    border-radius: 50%;
+}
+.suggestedUser p{
+    padding-left: 10px;
+}
+.post{
+    /* height: 300px; */
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 5%;
+    border: 1px solid gray;
+}
+.post i{
+    font-size: 20px;
+}
+.posterName{
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.posterImage{
+    display: flex;
+    align-items: center;
+    width: 25%;
+    justify-content: space-around;
+}
+.posterImage i{
+    border: 1px solid gray;
+    padding: 15px;
+    border-radius: 50%;
+}
+.postImage img{
+    width: 100%;
+}
+.postLikes{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.postLikes i{
+    font-size: 25px;
+}
+.likeComment{
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+}
+.postCaptions{
+    padding: 0px 10px;
+    display: flex;
+}
+.postCaptions p{
+    padding-left: 5px;
+}
+.viewComment{
+    padding: 0px 10px;
+    color: gray;
+}
+.viewComment b{
+    font-weight: 400;
+}
+.addComment{
+    padding: 10px;
+    border-top: 1px solid lightgray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.addComment input{
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border: none;
+    font-size: 15px;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Post</title>
+</head>
+<body>
+    <h2>Add your Post here</h2>
+    <form onsubmit="addPost(event)">
+        <label>Poster Name</label><br />
+        <input type="text" id="postName" /><br />
+        <label>Post Caption</label><br />
+        <input type="text" id="postCaption" /><br />
+        <label>Post Image url</label><br />
+        <input type="text" id="postImage" /><br />
+        <input type="submit" /><br />
+    </form>
+    <script>
+        function addPost(event){
+            event.preventDefault();
+            var postName = document.getElementById("postName").value;
+            var postCaption = document.getElementById("postCaption").value;
+            var postImage = document.getElementById("postImage").value;
+            
+            var post = { postName, postCaption, postImage };
+            var addPost = JSON.parse(localStorage.getItem("posts")) || [];
+            addPost.push(post);
+
+            localStorage.setItem("posts",JSON.stringify(addPost));
+
+            alert("Post Added Succesfully");
+        }
+    </script>
+</body>
+</html>
