@@ -41,8 +41,10 @@ function register(event){
               multiUsers.push(userInfo);
               localStorage.setItem("instaUsers", JSON.stringify(multiUsers));
               alert("Registered Successfully.");
-            //   window.location.href = `./Login.html`;
-                }
+            }else{
+              alert("you're already registered");
+              window.location.href = `./Login.html`;
+            }
             }else{
                 alert("Passwords doesn't match");
             }

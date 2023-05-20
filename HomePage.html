@@ -58,20 +58,20 @@
             </div>
             <div class="main">
                 <div class="content">
-                    <div class="story">
+                    <div id="storyName" class="story">
                         <div class="stories">
-                            <div id="storyImage">
+                            <div>
                             <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="story" />
                             </div>
-                            <p id="storyName">UserName</p>
+                            <p>UserName</p>
                         </div>
                     </div>
-                    <div class="post">
+                    <div  id="postName" class="post">
                         <div class="posterName">
                             <div class="posterImage">
                                 <i class="fa-regular fa-user"></i>
                                 <div class="posterInfo">
-                                    <p id="postName">name</p>
+                                    <p>name</p>
                                     <small>location</small>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                                 <i class="fa-solid fa-ellipsis"></i>
                             </div>
                         </div>
-                        <div id="postImage" class="postImage">
+                        <div class="postImage">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFN5iwAHFlbfHDcpvht4j_ONtZHbMNiNCfFg&usqp=CAU"
                                 alt="posts" />
                         </div>
@@ -92,8 +92,8 @@
                             <div class="save"><i class="fa-regular fa-bookmark"></i></div>
                         </div>
                         <div class="postCaptions">
-                            <b id="postName">User</b>
-                            <p id="postCaption">Try to Love yourself, Little more, Everyday</p>
+                            <b>User</b>
+                            <p>Try to Love yourself, Little more, Everyday</p>
                         </div>
                         <div class="viewComment">
                             <b>View 3 comments</b>
@@ -165,37 +165,73 @@
                     alert("You've Logged out.");
                 }
                 // *********Add post********
-                var displayImage = document.getElementById("postImage");
-                var postImage = "";
+                // var displayImage = document.getElementById("postImage");
+                // var postImage = "";
                 var displayName = document.getElementById("postName");
                 var postName = "";
-                var displayCaption = document.getElementById("postCaption");
-                var postCaption = "";
+                // var displayCaption = document.getElementById("postCaption");
+                // var postCaption = "";
 
                 var postBackend = JSON.parse(localStorage.getItem("posts"));
                 for (var i = 0; i < postBackend.length; i++) {
-                    postImage += `<div class="postImage"><img src="${postBackend[i].postImage}"/></div>`;
-                    postName += `<b>${postBackend[i].postName}</b>`;
-                    postCaption += `<p>${postBackend[i].postCaption}</p>`;
+                    // postImage += `<div class="postImage"><img src="${postBackend[i].postImage}"/></div>`;
+                    postName += `<div class="posterName">
+                            <div class="posterImage">
+                                <i class="fa-regular fa-user"></i>
+                                <div class="posterInfo">
+                                    <p>${postBackend[i].postName}</p>
+                                    <small>location</small>
+                                </div>
+                            </div>
+                            <div class="postOptions">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                        </div>
+                        <div class="postImage">
+                            <img src="${postBackend[i].postImage}"
+                                alt="posts" />
+                        </div>
+                        <div class="postLikes">
+                            <div class="likeComment">
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-regular fa-comment fa-flip-horizontal"></i>
+                                <i class="fa-regular fa-paper-plane"></i>
+                            </div>
+                            <div class="save"><i class="fa-regular fa-bookmark"></i></div>
+                        </div>
+                        <div class="postCaptions">
+                            <b>${postBackend[i].postName}</b>
+                            <p>${postBackend[i].postCaption}</p>
+                        </div>
+                        <div class="viewComment">
+                            <b>View 3 comments</b>
+                        </div>
+                        <div class="addComment">
+                            <i class="fa-regular fa-face-smile"></i>
+                            <input type="text" placeholder="Add a Comment" />
+                            <b>Post</b>
+                        </div>`;
+                    // postCaption += `<p>${postBackend[i].postCaption}</p>`;
                 }
-                displayImage.innerHTML = postImage;
                 displayName.innerHTML = postName;
-                displayCaption.innerHTML = postCaption;
 
                 // *********Add Story********
-                var displayStoryImage = document.getElementById("storyImage");
-                var storyImage = "";
+                
                 var displayStoryName = document.getElementById("storyName");
                 var storyName = "";
 
 
                 var storyBackend = JSON.parse(localStorage.getItem("instaStory"));
                 for (var i = 0; i < storyBackend.length; i++) {
-                    storyImage += `<div><img src="${storyBackend[i].storyImage}"/></div>`;
-                    storyName += `<p>${storyBackend[i].storyName}</p>`;
+                    storyName += `
+                    <div class="stories">
+                                <div>
+                            <img src="${storyBackend[i].storyImage}" alt="story" />
+                            </div>
+                            <p>${storyBackend[i].storyName}</p></div>
+                        `;
                     
                 }
-                displayStoryImage.innerHTML = storyImage;
                 displayStoryName.innerHTML = storyName;
 
             }
