@@ -83,5 +83,12 @@ function login(event) {
       window.location.href = `./HomePage.html`;
     } else {
       alert("Please Register to Login..");
+      window.location.href = `./Register.html`;
     }
   }
+
+  // // *****redirect****
+  // function home(){
+  //   window.location.href = `./HomePage.html`;
+  //   alert("hi");
+  // }
