@@ -1,0 +1,93 @@
+.profile{
+    background-color: #fafafa;
+    height: 1000px;
+    /* border: 1px solid red; */
+    padding: 30px;
+    width: 80%;
+    margin-left: auto;
+}
+.profileDetails{
+    padding: 0px 50px 30px 50px;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.profilePic{
+    border-radius: 50%;
+    overflow: hidden;
+    width: 20%;
+}
+.profilePic img{
+    width: 100%;
+}
+.userData{
+    width: 70%;
+}
+.userName{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+    align-items: center;
+}
+.userName>p {
+    font-size: 30px;
+}
+.userName>i{
+    font-size: 30px;
+}
+.userName button{
+    padding: 10px;
+    background-color: #e6e6e6;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 15px;
+}
+.followers{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0px;
+}
+.followers>div{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+.followers>div>p{
+    font-size: 18px;
+    padding-left: 5px;
+}
+.profilePost{
+    width: 22%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    /* border: 1px solid black; */
+}
+.userPosts{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+.savedPosts{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+.profilePostGrid{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.userProfilePost{
+    width: 32%;
+    padding: 10px 2px;
+}
+.userProfilePost img{
+    width: 100%;
+}

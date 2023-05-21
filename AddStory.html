@@ -26,15 +26,6 @@
             addStory.push(story);
 
             localStorage.setItem("instaStory",JSON.stringify(addStory));
-
-
-
-            let insta_currentUser= JSON.parse(localStorage.getItem("instaCurrentUser"));
-            let insta_userData = JSON.parse(localStorage.getItem("instaUsers"));
-            // let story;
-            if(insta_currentUser[i].iEmail == insta_userData[i].iEmail){
-                console.log(insta_userData.iStory);
-            }
             alert("Story Added Succesfully");
         }
     </script>

@@ -61,47 +61,49 @@
                     <div id="storyName" class="story">
                         <div class="stories">
                             <div>
-                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="story" />
+                                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="story" />
                             </div>
                             <p>UserName</p>
                         </div>
                     </div>
-                    <div  id="postName" class="post">
-                        <div class="posterName">
-                            <div class="posterImage">
-                                <i class="fa-regular fa-user"></i>
-                                <div class="posterInfo">
-                                    <p>name</p>
-                                    <small>location</small>
+                    <div id="postName">
+                        <div class="post">
+                            <div class="posterName">
+                                <div class="posterImage">
+                                    <i class="fa-regular fa-user"></i>
+                                    <div class="posterInfo">
+                                        <p>name</p>
+                                        <small>location</small>
+                                    </div>
+                                </div>
+                                <div class="postOptions">
+                                    <i class="fa-solid fa-ellipsis"></i>
                                 </div>
                             </div>
-                            <div class="postOptions">
-                                <i class="fa-solid fa-ellipsis"></i>
+                            <div class="postImage">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFN5iwAHFlbfHDcpvht4j_ONtZHbMNiNCfFg&usqp=CAU"
+                                    alt="posts" />
                             </div>
-                        </div>
-                        <div class="postImage">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFN5iwAHFlbfHDcpvht4j_ONtZHbMNiNCfFg&usqp=CAU"
-                                alt="posts" />
-                        </div>
-                        <div class="postLikes">
-                            <div class="likeComment">
-                                <i class="fa-regular fa-heart"></i>
-                                <i class="fa-regular fa-comment fa-flip-horizontal"></i>
-                                <i class="fa-regular fa-paper-plane"></i>
+                            <div class="postLikes">
+                                <div class="likeComment">
+                                    <i class="fa-regular fa-heart"></i>
+                                    <i class="fa-regular fa-comment fa-flip-horizontal"></i>
+                                    <i class="fa-regular fa-paper-plane"></i>
+                                </div>
+                                <div class="save"><i class="fa-regular fa-bookmark"></i></div>
                             </div>
-                            <div class="save"><i class="fa-regular fa-bookmark"></i></div>
-                        </div>
-                        <div class="postCaptions">
-                            <b>User</b>
-                            <p>Try to Love yourself, Little more, Everyday</p>
-                        </div>
-                        <div class="viewComment">
-                            <b>View 3 comments</b>
-                        </div>
-                        <div class="addComment">
-                            <i class="fa-regular fa-face-smile"></i>
-                            <input type="text" placeholder="Add a Comment" />
-                            <b>Post</b>
+                            <div class="postCaptions">
+                                <b>User</b>
+                                <p>Try to Love yourself, Little more, Everyday</p>
+                            </div>
+                            <div class="viewComment">
+                                <b>View 3 comments</b>
+                            </div>
+                            <div class="addComment">
+                                <i class="fa-regular fa-face-smile"></i>
+                                <input type="text" placeholder="Add a Comment" />
+                                <b>Post</b>
+                            </div>    
                         </div>
                     </div>
                 </div>
@@ -175,7 +177,7 @@
                 var postBackend = JSON.parse(localStorage.getItem("posts"));
                 for (var i = 0; i < postBackend.length; i++) {
                     // postImage += `<div class="postImage"><img src="${postBackend[i].postImage}"/></div>`;
-                    postName += `<div class="posterName">
+                    postName += `<div class="post"><div class="posterName">
                             <div class="posterImage">
                                 <i class="fa-regular fa-user"></i>
                                 <div class="posterInfo">
@@ -210,30 +212,47 @@
                             <i class="fa-regular fa-face-smile"></i>
                             <input type="text" placeholder="Add a Comment" />
                             <b>Post</b>
-                        </div>`;
+                        </div></div>`;
                     // postCaption += `<p>${postBackend[i].postCaption}</p>`;
                 }
                 displayName.innerHTML = postName;
 
                 // *********Add Story********
-                
+
                 var displayStoryName = document.getElementById("storyName");
                 var storyName = "";
 
 
-                var storyBackend = JSON.parse(localStorage.getItem("instaStory"));
-                for (var i = 0; i < storyBackend.length; i++) {
-                    storyName += `
-                    <div class="stories">
-                                <div>
-                            <img src="${storyBackend[i].storyImage}" alt="story" />
-                            </div>
-                            <p>${storyBackend[i].storyName}</p></div>
-                        `;
-                    
-                }
-                displayStoryName.innerHTML = storyName;
+                // var storyBackend = JSON.parse(localStorage.getItem("instaStory"));
+                // for (var i = 0; i < storyBackend.length; i++) {
+                //     storyName += `
+                //     <div class="stories">
+                //                 <div>
+                //             <img src="${storyBackend[i].storyImage}" alt="story" />
+                //             </div>
+                //             <p>${storyBackend[i].storyName}</p></div>
+                //         `;
 
+                // }
+                // displayStoryName.innerHTML = storyName;
+
+                var insta_currentUser = JSON.parse(localStorage.getItem("instaCurrentUser"));
+                var insta_userInfo = JSON.parse(localStorage.getItem("instaUsers"));
+
+                let instaPost = JSON.parse(localStorage.getItem("posts"));
+                for (var i = 0; i < insta_userInfo.length; i++) {
+                    if (insta_currentUser.iEmail == insta_userInfo[i].iEmail) {
+                        if (insta_userInfo[i].iPost == undefined) {
+                            insta_userInfo[i].iPost = [instaPost[i]];
+                            // insta_currentUser.iPost = [instaPost[i]];
+                        } else {
+                            insta_userInfo[i].iPost.push(instaPost[i]);
+                            // insta_currentUser.iPost.push(instaPost[i]);
+                        }
+                    }
+                }
+                localStorage.setItem("instaUsers", JSON.stringify(insta_userInfo));
+                localStorage.setItem("instaCurrentUser", JSON.stringify(insta_currentUser));
             }
 
             function logout() {
