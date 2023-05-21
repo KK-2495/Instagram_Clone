@@ -68,6 +68,7 @@
                             <button>Edit Profile</button>
                             <i class="fa-solid fa-gear"></i>
                         </div>
+                        <div id="logout"></div>
                         <div class="followers">
                             <div>
                                 <b>101</b>
@@ -134,9 +135,9 @@
                     var showName = document.getElementById("userSwitch");
                     var logoutswitch = document.getElementById("logout");
                     var activeUserName = `<h3>${currentUser.iName}</h3>`;
-                    // var logout = `<button onclick="logout()">Log Out</button>`;
-                    // showName.innerHTML = activeUserName;
-                    // logoutswitch.innerHTML = logout;
+                    var logout = `<button onclick="logout()">Log Out</button>`;
+                    showName.innerHTML = activeUserName;
+                    logoutswitch.innerHTML = logout;
                 } else {
                     alert("You've Logged out.");
                 }
@@ -160,8 +161,8 @@
 
                 // *********Add Story********
 
-                var displayStoryName = document.getElementById("storyName");
-                var storyName = "";
+                // var displayStoryName = document.getElementById("storyName");
+                // var storyName = "";
 
 
                 // var storyBackend = JSON.parse(localStorage.getItem("instaStory"));
