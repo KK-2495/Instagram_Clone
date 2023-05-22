@@ -12,21 +12,22 @@ function register(event){
     if(email && name && password && confirmPassword){
         if(password.length>=8 && confirmPassword.length>=8){
             if(password === confirmPassword){
-                // var iUsers = JSON.parse(localStorage.getItem("instaUsers")) || [];
-                // var flag = false;
-                // for(var i=0; i<=iUsers.length; i++){
-                //     if(iUsers[i].iEmail == email){
-                //         flag = true;
-                //     }
-                //     if(!flag){
-                //         var usersInfo = {iEmail:email, iName:name, iPass: password, iConfirmPassword:confirmPassword};
-                //         iUsers.push(usersInfo);
-                //         localStorage.setItem("instaUsers", JSON.stringify(iUsers));
-                //         alert("Registration Succesful.");
-                //     }else{
-                //         alert("You're Already registered.");
-                //         window.location.href = `./Login.html`;
-                //     }
+                var iUsers = JSON.parse(localStorage.getItem("instaUsers")) || [];
+                var flag = false;
+                for(var i=0; i<=iUsers.length; i++){
+                    if(iUsers[i].iEmail == email){
+                        flag = true;
+                    }
+                  }
+                    if(!flag){
+                        var usersInfo = {iEmail:email, iName:name, iPass: password, iConfirmPassword:confirmPassword};
+                        iUsers.push(usersInfo);
+                        localStorage.setItem("instaUsers", JSON.stringify(iUsers));
+                        alert("Registration Succesful.");
+                    }else{
+                        alert("You're Already registered.");
+                        window.location.href = `./Login.html`;
+                    }
 
              var userInfo = {iEmail:email, iName:name, iPass: password, iConfirmPassword:confirmPassword, iStory, iPost};
             var multiUsers = JSON.parse(localStorage.getItem("instaUsers")) || [];
