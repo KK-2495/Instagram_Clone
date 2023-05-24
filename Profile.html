@@ -23,7 +23,7 @@
                         <i class="fa-solid fa-house"></i>
                         <p>Home</p>
                     </div>
-                    <div class="navBarOptions">
+                    <div onclick="displaySearch()" class="navBarOptions">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <p>Search</p>
                     </div>
@@ -56,14 +56,32 @@
                         <p>More</p>
                     </div>
                 </div>
+                <div id="mySidebar" class="searchBar">
+                    <div>
+                        <h1>Search</h1>
+                        <form onsubmit="SearchUser(event)">
+                            <input type="search" placeholder="Search" id="Search_users" />
+                        </form>
+                    </div>
+                    <div id="search_result">
+                        <div id="sugg-head" class="sugg_div">
+                            <img src="" />
+                            <p></p>
+                        </div>
+                        <div id="no_display">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="profile">
                 <div class="profileDetails">
                     <div class="profilePic">
-                        <img src="https://scontent.fbom12-1.fna.fbcdn.net/v/t39.30808-6/289031410_4532082823558497_8389970289912701648_n.jpg?stp=dst-jpg_s851x315&_nc_cat=111&ccb=1-7&_nc_sid=da31f3&_nc_ohc=bNiOpzboTEwAX8fkDsr&_nc_ht=scontent.fbom12-1.fna&oh=00_AfA06AhwMcqQy7y8sY1-Fc9vx_U9jn0OpeWJqwNkZ7ohBA&oe=646E2DB7" alt=""/>
+                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                            alt="" />
                     </div>
                     <div class="userData">
-                        <div class="userName">
+                        <div onclick="redirectEditProfile()" class="userName">
                             <p id="userSwitch">Krish</p>
                             <button>Edit Profile</button>
                             <i class="fa-solid fa-gear"></i>
@@ -89,13 +107,15 @@
                             </div>
                             <div class="bio">
                                 <p>🙏#தமிழன்டா #tamilanda</p>
-                            <p>🇮🇳 𝕀ℕ𝔻𝕀𝔸ℕ 🇮🇳</p>
-                            <p>200 NS 🏍️💨</p>
-                            <p>🎂24th April 1995🎂</p>
+                                <p>🇮🇳 𝕀ℕ𝔻𝕀𝔸ℕ 🇮🇳</p>
+                                <p>200 NS 🏍️💨</p>
+                                <p>🎂24th April 1995🎂</p>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
                 <div class="profilePost">
                     <div class="userPosts">
                         <i class="fa-solid fa-table-cells"></i>
@@ -108,22 +128,28 @@
                 </div>
                 <div id="postName" class="profilePostGrid">
                     <div class="userProfilePost">
-                        <img src="https://scontent.fbom12-1.fna.fbcdn.net/v/t39.30808-6/294699813_4626468690786576_4190628195338301237_n.jpg?stp=dst-jpg_s851x315&_nc_cat=108&ccb=1-7&_nc_sid=da31f3&_nc_ohc=rp9hrGmj4PoAX9jtlep&_nc_ht=scontent.fbom12-1.fna&oh=00_AfBHJ6iRP9FtMqIIkDx2xUriqDWxOqfGqdWb2d0iCLxQZA&oe=646CDF22" alt=""/>
+                        <img src="https://scontent.fbom12-1.fna.fbcdn.net/v/t39.30808-6/294699813_4626468690786576_4190628195338301237_n.jpg?stp=dst-jpg_s851x315&_nc_cat=108&ccb=1-7&_nc_sid=da31f3&_nc_ohc=rp9hrGmj4PoAX9jtlep&_nc_ht=scontent.fbom12-1.fna&oh=00_AfBHJ6iRP9FtMqIIkDx2xUriqDWxOqfGqdWb2d0iCLxQZA&oe=646CDF22"
+                            alt="" />
                     </div>
                     <div class="userProfilePost">
-                        <img src="https://scontent.fbom12-1.fna.fbcdn.net/v/t39.30808-6/287644932_4520097731423673_8225992443045377975_n.jpg?stp=dst-jpg_s851x315&_nc_cat=109&ccb=1-7&_nc_sid=da31f3&_nc_ohc=ZyOEwAtN-FwAX-_IiOB&_nc_ht=scontent.fbom12-1.fna&oh=00_AfBjfFvwKYCqteEN6RflgyOKDPw656TpIF1dAOlKgJWDAg&oe=646D20D6" alt=""/>
+                        <img src="https://scontent.fbom12-1.fna.fbcdn.net/v/t39.30808-6/287644932_4520097731423673_8225992443045377975_n.jpg?stp=dst-jpg_s851x315&_nc_cat=109&ccb=1-7&_nc_sid=da31f3&_nc_ohc=ZyOEwAtN-FwAX-_IiOB&_nc_ht=scontent.fbom12-1.fna&oh=00_AfBjfFvwKYCqteEN6RflgyOKDPw656TpIF1dAOlKgJWDAg&oe=646D20D6"
+                            alt="" />
                     </div>
                     <div class="userProfilePost">
-                        <img src="https://scontent.fbom12-1.fna.fbcdn.net/v/t39.30808-6/237157392_3620430411390414_5325721952518923526_n.jpg?stp=c315.0.810.810a_dst-jpg_s851x315&_nc_cat=110&ccb=1-7&_nc_sid=da31f3&_nc_ohc=r-QoeVY1QigAX9m63Cr&_nc_ht=scontent.fbom12-1.fna&oh=00_AfAWUVOKxkS9PWSweRQ40OKPYx_Vq8SUCzryIRafi2OkhA&oe=646D196E" alt=""/>
+                        <img src="https://scontent.fbom12-1.fna.fbcdn.net/v/t39.30808-6/237157392_3620430411390414_5325721952518923526_n.jpg?stp=c315.0.810.810a_dst-jpg_s851x315&_nc_cat=110&ccb=1-7&_nc_sid=da31f3&_nc_ohc=r-QoeVY1QigAX9m63Cr&_nc_ht=scontent.fbom12-1.fna&oh=00_AfAWUVOKxkS9PWSweRQ40OKPYx_Vq8SUCzryIRafi2OkhA&oe=646D196E"
+                            alt="" />
                     </div>
                     <div class="userProfilePost">
-                        <img src="https://scontent.fbom12-1.fna.fbcdn.net/v/t1.6435-9/194063784_3447670548666402_3297368860895308252_n.jpg?stp=dst-jpg_s851x315&_nc_cat=107&ccb=1-7&_nc_sid=da31f3&_nc_ohc=x_hpBse4GMUAX9mlidH&_nc_ht=scontent.fbom12-1.fna&oh=00_AfBCgKPr3U8ZuiPVSf9ZqYiz0Z6LWMb4fp1q5t47-4jDzA&oe=6490592F" alt=""/>
+                        <img src="https://scontent.fbom12-1.fna.fbcdn.net/v/t1.6435-9/194063784_3447670548666402_3297368860895308252_n.jpg?stp=dst-jpg_s851x315&_nc_cat=107&ccb=1-7&_nc_sid=da31f3&_nc_ohc=x_hpBse4GMUAX9mlidH&_nc_ht=scontent.fbom12-1.fna&oh=00_AfBCgKPr3U8ZuiPVSf9ZqYiz0Z6LWMb4fp1q5t47-4jDzA&oe=6490592F"
+                            alt="" />
                     </div>
                     <div class="userProfilePost">
-                        <img src="https://scontent.fbom12-1.fna.fbcdn.net/v/t1.6435-9/87014657_2248221538611315_5431463698910674944_n.jpg?stp=dst-jpg_s851x315&_nc_cat=105&ccb=1-7&_nc_sid=da31f3&_nc_ohc=dwoeInxQYIEAX8_EQ9Z&_nc_ht=scontent.fbom12-1.fna&oh=00_AfCvx94OyhrC1yMxed6qeasGpL7YJrkFhLE7e8V1-1hRYw&oe=6490471D" alt=""/>
+                        <img src="https://scontent.fbom12-1.fna.fbcdn.net/v/t1.6435-9/87014657_2248221538611315_5431463698910674944_n.jpg?stp=dst-jpg_s851x315&_nc_cat=105&ccb=1-7&_nc_sid=da31f3&_nc_ohc=dwoeInxQYIEAX8_EQ9Z&_nc_ht=scontent.fbom12-1.fna&oh=00_AfCvx94OyhrC1yMxed6qeasGpL7YJrkFhLE7e8V1-1hRYw&oe=6490471D"
+                            alt="" />
                     </div>
                     <div class="userProfilePost">
-                        <img src="https://scontent.fbom12-1.fna.fbcdn.net/v/t1.6435-9/76939199_2074660635967407_9033028732792602624_n.jpg?stp=c0.242.1080.1080a_dst-jpg_s851x315&_nc_cat=102&ccb=1-7&_nc_sid=da31f3&_nc_ohc=goasOyolqdEAX-6YljJ&_nc_ht=scontent.fbom12-1.fna&oh=00_AfDOiIPGav8cCcjUF12EcC5HqVX1ztLe29_PSGamW6IL4w&oe=64903B19" alt=""/>
+                        <img src="https://scontent.fbom12-1.fna.fbcdn.net/v/t1.6435-9/76939199_2074660635967407_9033028732792602624_n.jpg?stp=c0.242.1080.1080a_dst-jpg_s851x315&_nc_cat=102&ccb=1-7&_nc_sid=da31f3&_nc_ohc=goasOyolqdEAX-6YljJ&_nc_ht=scontent.fbom12-1.fna&oh=00_AfDOiIPGav8cCcjUF12EcC5HqVX1ztLe29_PSGamW6IL4w&oe=64903B19"
+                            alt="" />
                     </div>
                 </div>
             </div>
@@ -197,6 +223,18 @@
                 localStorage.setItem("instaCurrentUser", JSON.stringify(insta_currentUser));
             }
 
+            // Search Bar & Toggle
+            function displaySearch(){
+                var get = document.querySelector(".searchBar");
+                if(get.style.display === "none"){
+                    get.style.display = "block";
+                }else{
+                    get.style.display = "none";
+                }
+            }
+            function redirectEditProfile(){
+                window.location.href = `./editProfile.html`;
+            }
             function logout() {
                 localStorage.removeItem("instaCurrentUser");
                 window.location.reload();
