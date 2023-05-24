@@ -19,7 +19,7 @@
                         alt="log" />
                 </div>
                 <div class="navBarList">
-                    <div class="navBarOptions">
+                    <div onclick="redirectHomepage()" class="navBarOptions">
                         <i class="fa-solid fa-house"></i>
                         <p>Home</p>
                     </div>
@@ -55,28 +55,28 @@
                         <i class="fa-solid fa-bars"></i>
                         <p>More</p>
                     </div>
-                </div>
-                <div id="mySidebar" class="searchBar">
-                    <div>
-                        <h1>Search</h1>
-                        <form onsubmit="SearchUser(event)">
-                            <input type="search" placeholder="Search" id="Search_users" />
-                        </form>
-                    </div>
-                    <div id="search_result">
-                        <div id="sugg-head" class="sugg_div">
-                            <img src="" />
-                            <p></p>
+                    <div id="mySidebar" class="searchBar">
+                        <div>
+                            <h1>Search</h1>
+                            <form onsubmit="SearchUser(event)">
+                                <input type="search" placeholder="Search" id="Search_users" />
+                            </form>
                         </div>
-                        <div id="no_display">
-                            <p></p>
+                        <div id="search_result">
+                            <div id="sugg-head" class="sugg_div">
+                                <img src="" />
+                                <p></p>
+                            </div>
+                            <div id="no_display">
+                                <p></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="profile">
                 <div class="profileDetails">
-                    <div class="profilePic">
+                    <div id="userImage" class="profilePic">
                         <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
                             alt="" />
                     </div>
@@ -102,10 +102,10 @@
                             </div>
                         </div>
                         <div class="userBio">
-                            <div class="userBioName">
+                            <div id="userSwitch1" class="userBioName">
                                 <b>Krishna Kalimuthu</b>
                             </div>
-                            <div class="bio">
+                            <div id="userBio" class="bio">
                                 <p>🙏#தமிழன்டா #tamilanda</p>
                                 <p>🇮🇳 𝕀ℕ𝔻𝕀𝔸ℕ 🇮🇳</p>
                                 <p>200 NS 🏍️💨</p>
@@ -159,10 +159,19 @@
                 var currentUser = JSON.parse(localStorage.getItem("instaCurrentUser"));
                 if (currentUser) {
                     var showName = document.getElementById("userSwitch");
+                    var showName1 = document.getElementById("userSwitch1");
+                    var showImage = document.getElementById("userImage");
+                    var showBio = document.getElementById("userBio");
                     var logoutswitch = document.getElementById("logout");
-                    var activeUserName = `<h3>${currentUser.iName}</h3>`;
+                    var activeUserName = `<h4>${currentUser.iName}</h4>`;
+                    var activeUserName1 = `<b>${currentUser.iName}</b>`;
+                    var userImage = `<div><img src="${currentUser.iImage}"/></div>`;
+                    var userBio = `<div>${currentUser.iBio}</div>`;
                     var logout = `<button onclick="logout()">Log Out</button>`;
                     showName.innerHTML = activeUserName;
+                    showName1.innerHTML = activeUserName1;
+                    showImage.innerHTML = userImage;
+                    showBio.innerHTML = userBio;
                     logoutswitch.innerHTML = logout;
                 } else {
                     alert("You've Logged out.");
@@ -234,6 +243,9 @@
             }
             function redirectEditProfile(){
                 window.location.href = `./editProfile.html`;
+            }
+            function redirectHomepage(){
+                window.location.href = `./HomePage.html`;
             }
             function logout() {
                 localStorage.removeItem("instaCurrentUser");

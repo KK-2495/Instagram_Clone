@@ -19,7 +19,7 @@
                         alt="log" />
                 </div>
                 <div class="navBarList">
-                    <div class="navBarOptions">
+                    <div onclick="redirectHomepage()" class="navBarOptions">
                         <i class="fa-solid fa-house"></i>
                         <p>Home</p>
                     </div>
@@ -103,11 +103,11 @@
                         <h1>Edit Profile</h1>
                         <div class="profileChanges">
                             <div class="profileDetails">
-                                <div class="profileImage">
+                                <div id="userImage" class="profileImage">
                                     <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" />
                                 </div>
                                 <div class="profileName">
-                                    <b>User Name</b>
+                                    <b id="userSwitch">User Name</b>
                                 </div>
                             </div>
                             <form onsubmit="profileChanges(event)">
@@ -129,68 +129,14 @@
                 var currentUser = JSON.parse(localStorage.getItem("instaCurrentUser"));
                 if (currentUser) {
                     var showName = document.getElementById("userSwitch");
-                    var logoutswitch = document.getElementById("logout");
+                    var showImage = document.getElementById("userImage");
                     var activeUserName = `<h3>${currentUser.iName}</h3>`;
-                    var logout = `<button onclick="logout()">Log Out</button>`;
+                    var userImage = `<div><img src="${currentUser.iImage}"/></div>`;
                     showName.innerHTML = activeUserName;
-                    logoutswitch.innerHTML = logout;
+                    showImage.innerHTML = userImage;
                 } else {
                     alert("You've Logged out.");
                 }
-                // *********Add post********
-                // var displayImage = document.getElementById("postImage");
-                // var postImage = "";
-                var displayName = document.getElementById("postName");
-                var postName = "";
-                // var displayCaption = document.getElementById("postCaption");
-                // var postCaption = "";
-
-                var postBackend = JSON.parse(localStorage.getItem("posts"));
-                for (var i = 0; i < postBackend.length; i++) {
-                    // postImage += `<div class="postImage"><img src="${postBackend[i].postImage}"/></div>`;
-                    postName += `<div class="userProfilePost">
-                        <img src="${postBackend[i].postImage}" alt=""/>
-                    </div>`;
-                    // postCaption += `<p>${postBackend[i].postCaption}</p>`;
-                }
-                displayName.innerHTML = postName;
-
-                // *********Add Story********
-
-                // var displayStoryName = document.getElementById("storyName");
-                // var storyName = "";
-
-
-                // var storyBackend = JSON.parse(localStorage.getItem("instaStory"));
-                // for (var i = 0; i < storyBackend.length; i++) {
-                //     storyName += `
-                //     <div class="stories">
-                //                 <div>
-                //             <img src="${storyBackend[i].storyImage}" alt="story" />
-                //             </div>
-                //             <p>${storyBackend[i].storyName}</p></div>
-                //         `;
-
-                // }
-                // displayStoryName.innerHTML = storyName;
-
-                var insta_currentUser = JSON.parse(localStorage.getItem("instaCurrentUser"));
-                var insta_userInfo = JSON.parse(localStorage.getItem("instaUsers"));
-
-                let instaPost = JSON.parse(localStorage.getItem("posts"));
-                for (var i = 0; i < insta_userInfo.length; i++) {
-                    if (insta_currentUser.iEmail == insta_userInfo[i].iEmail) {
-                        if (insta_userInfo[i].iPost == undefined) {
-                            insta_userInfo[i].iPost = [instaPost[i]];
-                            // insta_currentUser.iPost = [instaPost[i]];
-                        } else {
-                            insta_userInfo[i].iPost.push(instaPost[i]);
-                            // insta_currentUser.iPost.push(instaPost[i]);
-                        }
-                    }
-                }
-                localStorage.setItem("instaUsers", JSON.stringify(insta_userInfo));
-                localStorage.setItem("instaCurrentUser", JSON.stringify(insta_currentUser));
 
             }
             // *****editProfie*********
@@ -205,12 +151,13 @@
                 var insta_userInfo = JSON.parse(localStorage.getItem("instaUsers"));
 
                 if(changeName == insta_currentUser.iName){
-                    alert("Existing Name.");
+                    alert("Existing Name");
                 }else{
                     insta_currentUser.iName = changeName;
                     insta_currentUser.iImage = changeImage;
                     insta_currentUser.iBio = changeBio;
-                    
+                    window.location.reload();
+                                        
                 localStorage.setItem("instaCurrentUser", JSON.stringify(insta_currentUser));
 
                 }
@@ -226,14 +173,11 @@
                     get.style.display = "none";
                 }
             }
-            function redirectEditProfile() {
-                window.location.href = `./editProfile.html`;
+            function redirectHomepage(){
+                window.location.href = `./HomePage.html`;
             }
 
-            function logout() {
-                localStorage.removeItem("instaCurrentUser");
-                window.location.reload();
-            }
+
         </script>
     </body>
 

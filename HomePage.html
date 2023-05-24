@@ -46,7 +46,7 @@
                         <i class="fa-solid fa-square-plus"></i>
                         <p>Create</p>
                     </div>
-                    <div class="navBarOptions">
+                    <div onclick="redirectProfile()" class="navBarOptions">
                         <i class="fa-regular fa-user"></i>
                         <p>Profile</p>
                     </div>
@@ -59,126 +59,136 @@
                     <div>
                         <h1>Search</h1>
                         <form onsubmit="SearchUser(event)">
-                            <input type="search" placeholder="Search" id="Search_users" />
+                            <input type="text" placeholder="Search" id="searchUsers" />
+                            <input type="submit">
                         </form>
                     </div>
-                    <div id="search_result">
-                        <div id="sugg-head" class="sugg_div">
-                            <img src="" />
-                            <p></p>
-                        </div>
-                        <div id="no_display">
-                            <p></p>
+                    <div id="searchResult" class="searchResult">
+                        <div class="userList">
+                            <div class="userListName">
+                            <i class="fa-regular fa-face-smile"></i>
+                            <b>Krish</b>
+                            </div>
+                            <div class="userListFollow">
+                                <p>Follow</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="main">
-                <div class="content">
-                    <div id="storyName" class="story">
-                        <div class="stories">
-                            <div>
-                                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="story" />
-                            </div>
-                            <p>UserName</p>
+        </div>
+        </div>
+        <div class="main">
+            <div class="content">
+                <div id="storyName" class="story">
+                    <div class="stories">
+                        <div>
+                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="story" />
                         </div>
-                    </div>
-                    <div id="postName">
-                        <div class="post">
-                            <div class="posterName">
-                                <div class="posterImage">
-                                    <i class="fa-regular fa-user"></i>
-                                    <div class="posterInfo">
-                                        <p>name</p>
-                                        <small>location</small>
-                                    </div>
-                                </div>
-                                <div class="postOptions">
-                                    <i class="fa-solid fa-ellipsis"></i>
-                                </div>
-                            </div>
-                            <div class="postImage">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFN5iwAHFlbfHDcpvht4j_ONtZHbMNiNCfFg&usqp=CAU"
-                                    alt="posts" />
-                            </div>
-                            <div class="postLikes">
-                                <div class="likeComment">
-                                    <i class="fa-regular fa-heart"></i>
-                                    <i class="fa-regular fa-comment fa-flip-horizontal"></i>
-                                    <i class="fa-regular fa-paper-plane"></i>
-                                </div>
-                                <div class="save"><i class="fa-regular fa-bookmark"></i></div>
-                            </div>
-                            <div class="postCaptions">
-                                <b>User</b>
-                                <p>Try to Love yourself, Little more, Everyday</p>
-                            </div>
-                            <div class="viewComment">
-                                <b>View 3 comments</b>
-                            </div>
-                            <div class="addComment">
-                                <i class="fa-regular fa-face-smile"></i>
-                                <input type="text" placeholder="Add a Comment" />
-                                <b>Post</b>
-                            </div>    
-                        </div>
+                        <p>UserName</p>
                     </div>
                 </div>
-                <div class="suggestions">
-                    <div class="userInfo">
-                        <div class="user">
-                            <i class="fa-regular fa-user"></i>
-                            <p id="userSwitch">user Name</p>
+                <div id="postName">
+                    <div class="post">
+                        <div class="posterName">
+                            <div class="posterImage">
+                                <i class="fa-regular fa-user"></i>
+                                <div class="posterInfo">
+                                    <p>name</p>
+                                    <small>location</small>
+                                </div>
+                            </div>
+                            <div class="postOptions">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
                         </div>
-                        <div id="logout" class="follow">
-                            Switch
+                        <div class="postImage">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFN5iwAHFlbfHDcpvht4j_ONtZHbMNiNCfFg&usqp=CAU"
+                                alt="posts" />
                         </div>
-                    </div>
-                    <div class="addFollower">
-                        <div class="suggested">
-                            <h3>Suggested for you</h3>
-                            <b>See All</b>
+                        <div class="postLikes">
+                            <div class="likeComment">
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-regular fa-comment fa-flip-horizontal"></i>
+                                <i class="fa-regular fa-paper-plane"></i>
+                            </div>
+                            <div class="save"><i class="fa-regular fa-bookmark"></i></div>
                         </div>
-                    </div>
-                    <div class="suggestedUserInfo">
-                        <div class="suggestedUser">
-                            <i class="fa-regular fa-user"></i>
-                            <p>Abhi</p>
+                        <div class="postCaptions">
+                            <b>User</b>
+                            <p>Try to Love yourself, Little more, Everyday</p>
                         </div>
-                        <div class="follow">
-                            Follow
+                        <div class="viewComment">
+                            <b>View 3 comments</b>
                         </div>
-                    </div>
-                    <div class="suggestedUserInfo">
-                        <div class="suggestedUser">
-                            <i class="fa-regular fa-user"></i>
-                            <p>Vrushab</p>
-                        </div>
-                        <div class="follow">
-                            Follow
-                        </div>
-                    </div>
-                    <div class="suggestedUserInfo">
-                        <div class="suggestedUser">
-                            <i class="fa-regular fa-user"></i>
-                            <p>user Name</p>
-                        </div>
-                        <div class="follow">
-                            Follow
+                        <div class="addComment">
+                            <i class="fa-regular fa-face-smile"></i>
+                            <input type="text" placeholder="Add a Comment" />
+                            <b>Post</b>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="suggestions">
+                <div class="userInfo">
+                    <div class="user">
+                        <div id="userImage">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" />
+                        </div>
+                        <p id="userSwitch">user Name</p>
+                    </div>
+                    <div id="logout" class="follow">
+                        Switch
+                    </div>
+                </div>
+                <div class="addFollower">
+                    <div class="suggested">
+                        <h3>Suggested for you</h3>
+                        <b>See All</b>
+                    </div>
+                </div>
+                <div class="suggestedUserInfo">
+                    <div class="suggestedUser">
+                        <i class="fa-regular fa-user"></i>
+                        <p>Abhi</p>
+                    </div>
+                    <div class="follow">
+                        Follow
+                    </div>
+                </div>
+                <div class="suggestedUserInfo">
+                    <div class="suggestedUser">
+                        <i class="fa-regular fa-user"></i>
+                        <p>Vrushab</p>
+                    </div>
+                    <div class="follow">
+                        Follow
+                    </div>
+                </div>
+                <div class="suggestedUserInfo">
+                    <div class="suggestedUser">
+                        <i class="fa-regular fa-user"></i>
+                        <p>user Name</p>
+                    </div>
+                    <div class="follow">
+                        Follow
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
         <script>
             window.onload = function () {
                 var currentUser = JSON.parse(localStorage.getItem("instaCurrentUser"));
                 if (currentUser) {
                     var showName = document.getElementById("userSwitch");
+                    var showImage = document.getElementById("userImage");
                     var logoutswitch = document.getElementById("logout");
                     var activeUserName = `<h3>${currentUser.iName}</h3>`;
+                    var userImage = `<div><img src="${currentUser.iImage}"/></div>`;
                     var logout = `<button onclick="logout()">Log Out</button>`;
                     showName.innerHTML = activeUserName;
+                    showImage.innerHTML = userImage;
                     logoutswitch.innerHTML = logout;
                 } else {
                     alert("You've Logged out.");
@@ -271,13 +281,45 @@
                 localStorage.setItem("instaUsers", JSON.stringify(insta_userInfo));
                 localStorage.setItem("instaCurrentUser", JSON.stringify(insta_currentUser));
             }
-            function displaySearch(){
+            function displaySearch() {
                 var get = document.querySelector(".searchBar");
-                if(get.style.display === "none"){
+                if (get.style.display === "none") {
                     get.style.display = "block";
-                }else{
+                } else {
                     get.style.display = "none";
                 }
+            }
+            function SearchUser(event) {
+                event.preventDefault();
+
+                var usersList = document.getElementById("searchUsers").value;
+
+                if (usersList) {
+                    var searchResult = document.getElementById("searchResult");
+                    var instaUsersList = JSON.parse(localStorage.getItem("instaUsers"));
+                    var showResult = "";
+                    for (var i = 0; i < instaUsersList.length; i++) {
+                        if (usersList == instaUsersList[i].iName) {
+                            showResult = `
+                        <div class="userList">
+                            <div class="userListName">
+                            <i class="fa-regular fa-face-smile"></i>
+                            <b>${instaUsersList[i].iName}</b>
+                            </div>
+                            <div class="userListFollow">
+                                <p>Follow</p>
+                            </div>
+                    </div>`;
+                        }
+                    }
+                    searchResult.innerHTML = showResult;
+                } else {
+                    alert("No Matches found");
+                }
+
+            }
+            function redirectProfile() {
+                window.location.href = `./Profile.html`;
             }
             function logout() {
                 localStorage.removeItem("instaCurrentUser");

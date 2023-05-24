@@ -14,7 +14,7 @@ function register(event) {
         var usersInfo = { iEmail: email, iName: name, iPass: password, iConfirmPassword: confirmPassword,iPost };
         var iUsers = JSON.parse(localStorage.getItem("instaUsers")) || [];
         var flag = false;
-        for (var i = 0; i <= iUsers.length; i++) {
+        for (var i = 0; i < iUsers.length; i++) {
           if (iUsers[i].iEmail == email) {
             flag = true;
           }

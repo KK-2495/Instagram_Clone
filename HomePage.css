@@ -77,18 +77,23 @@
     align-items: center;
 }
 .user{
-    /* width: 50%; */
+    width: 60%;
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     font-size: 20px;
+    /* border: 1px solid gray; */
     align-items: center;
 }
 .user p{
-    padding-left: 10px;
+    /* padding-left: 10px; */
+    width: 80%;
 }
-.user i{
-    border: 1px solid gray;
+/* .user i{
     padding: 15px;
+    border-radius: 50%;
+} */
+.user img{
+    width: 70%;
     border-radius: 50%;
 }
 .follow{
@@ -223,3 +228,18 @@
       font-size: 15px;
       margin-top: 10%;
   }
+.searchResult{
+    /* border: 2px solid red; */
+    padding: 20px;
+}
+.userList{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.userListFollow{
+    background-color: #1798dd;
+    padding: 8px;
+    color: white;
+    border-radius: 5px;
+}

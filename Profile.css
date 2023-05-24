@@ -7,11 +7,12 @@
   margin-left: auto;
 }
 .profileDetails {
-  padding: 0px 50px 30px 50px;
+  padding: 0px 50px 30px;
   border-bottom: 1px solid lightgray;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* border: 1px solid red; */
 }
 .profilePic {
   border-radius: 50%;
@@ -23,9 +24,10 @@
 }
 .userData {
   width: 70%;
+  /* border: 2px solid red; */
 }
 .userName {
-  width: 50%;
+  /* width: 100%; */
   display: flex;
   justify-content: space-between;
   /* border: 1px solid red; */
@@ -47,7 +49,7 @@
   font-size: 15px;
 }
 .followers {
-  width: 60%;
+  /* width: 60%; */
   display: flex;
   justify-content: space-between;
   padding: 20px 0px;
@@ -85,11 +87,15 @@
   flex-wrap: wrap;
 }
 .userProfilePost {
+  border: 1px solid red;
   width: 32%;
+  height: 250px;
   padding: 10px 2px;
+  overflow: hidden;
 }
 .userProfilePost img {
   width: 100%;
+  text-align: center;
 }
 
 /* **************/
@@ -105,10 +111,10 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   border: 2px solid lightgray;
   background-color: white;
-  border-radius: 0px 20px 20px 0px; */
-  /* transition: 0.5s ease-in-out; */
-/* } */
-/* .searchBar input{
+  border-radius: 0px 20px 20px 0px;
+  transition: 0.5s ease-in-out;
+}
+.searchBar input{
     outline: none;
     border: none;
     background-color: #e9e9e9;
@@ -182,18 +188,21 @@
 .profileDetails{
     display: flex;
     justify-content: space-between;
-    width: 50%;
+    width: 80%;
     margin: auto;
 }
 .profileImage{
-    width: 30%;
+    /* border: 2px solid blue; */
+    width: 50%;
 }
 .profileImage img{
     width: 100%;
+    border-radius: 50%;
 }
 .profileChanges form{
-    width: 80%;
+    width: 90%;
     margin: auto;
-    border: 1px solid red;
+    border: 1px solid blueviolet;
     text-align: center;
+    padding: 20px 0;
 }
