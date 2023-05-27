@@ -87,7 +87,7 @@
   flex-wrap: wrap;
 }
 .userProfilePost {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 32%;
   height: 250px;
   padding: 10px 2px;
