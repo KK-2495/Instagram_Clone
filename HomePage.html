@@ -250,18 +250,18 @@
                 var storyName = "";
 
 
-                // var storyBackend = JSON.parse(localStorage.getItem("instaStory"));
-                // for (var i = 0; i < storyBackend.length; i++) {
-                //     storyName += `
-                //     <div class="stories">
-                //                 <div>
-                //             <img src="${storyBackend[i].storyImage}" alt="story" />
-                //             </div>
-                //             <p>${storyBackend[i].storyName}</p></div>
-                //         `;
+                var storyBackend = JSON.parse(localStorage.getItem("instaStory"));
+                for (var i = 0; i < storyBackend.length; i++) {
+                    storyName += `
+                    <div class="stories">
+                                <div>
+                            <img src="${storyBackend[i].storyImage}" alt="story" />
+                            </div>
+                            <p>${storyBackend[i].storyName}</p></div>
+                        `;
 
-                // }
-                // displayStoryName.innerHTML = storyName;
+                }
+                displayStoryName.innerHTML = storyName;
 
                 var insta_currentUser = JSON.parse(localStorage.getItem("instaCurrentUser"));
                 var insta_userInfo = JSON.parse(localStorage.getItem("instaUsers"));
