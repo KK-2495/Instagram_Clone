@@ -127,13 +127,25 @@
         <script>
             window.onload = function () {
                 var currentUser = JSON.parse(localStorage.getItem("instaCurrentUser"));
-                if (currentUser) {
+                if (!!currentUser) {
                     var showName = document.getElementById("userSwitch");
                     var showImage = document.getElementById("userImage");
                     var activeUserName = `<h3>${currentUser.iName}</h3>`;
                     var userImage = `<div><img src="${currentUser.iImage}"/></div>`;
                     showName.innerHTML = activeUserName;
                     showImage.innerHTML = userImage;
+
+                    var insta_userData = JSON.parse(localStorage.getItem("instaUsers"));
+
+                    for(var i=0;i<insta_userData.length;i++){
+                        if(currentUser.iEmail == insta_userData[i].iEmail){
+                            currentUser.iName = insta_userData[i].iName;
+                            currentUser.iBio = insta_userData[i].iBio;
+                            currentUser.iImage = insta_userData[i].iImage;
+                        }
+                    }
+                    localStorage.setItem("instaCurrentUser", JSON.stringify(currentUser));
+
                 } else {
                     alert("You've Logged out.");
                 }
@@ -150,17 +162,23 @@
                 var insta_currentUser = JSON.parse(localStorage.getItem("instaCurrentUser"));
                 var insta_userInfo = JSON.parse(localStorage.getItem("instaUsers"));
 
-                if(changeName == insta_currentUser.iName){
-                    alert("Existing Name");
+                if(insta_currentUser.iName == changeName){
+                    alert("Name is already the same");
                 }else{
-                    insta_currentUser.iName = changeName;
-                    insta_currentUser.iImage = changeImage;
-                    insta_currentUser.iBio = changeBio;
-                    window.location.reload();
-                                        
-                localStorage.setItem("instaCurrentUser", JSON.stringify(insta_currentUser));
 
+                    for(var i=0;i<insta_userInfo.length;i++){
+                        if(insta_currentUser.iEmail == insta_userInfo[i].iEmail){
+                            insta_userInfo[i].iName = changeName;
+                            insta_userInfo[i].iImage = changeImage;
+                            insta_userInfo[i].iBio = changeBio;
+                        }
+                    }
+                    alert("Profile Settings changed successfully");
+
+                    localStorage.setItem("instaUsers", JSON.stringify(insta_userInfo));
+                    window.location.reload();
                 }
+
 
             }
 

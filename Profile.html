@@ -127,7 +127,7 @@
                     </div>
                 </div>
                 <div id="postName" class="profilePostGrid">
-                    <div class="userProfilePost">
+                    <!-- <div class="userProfilePost">
                         <img src="https://scontent.fbom12-1.fna.fbcdn.net/v/t39.30808-6/294699813_4626468690786576_4190628195338301237_n.jpg?stp=dst-jpg_s851x315&_nc_cat=108&ccb=1-7&_nc_sid=da31f3&_nc_ohc=rp9hrGmj4PoAX9jtlep&_nc_ht=scontent.fbom12-1.fna&oh=00_AfBHJ6iRP9FtMqIIkDx2xUriqDWxOqfGqdWb2d0iCLxQZA&oe=646CDF22"
                             alt="" />
                     </div>
@@ -150,7 +150,7 @@
                     <div class="userProfilePost">
                         <img src="https://scontent.fbom12-1.fna.fbcdn.net/v/t1.6435-9/76939199_2074660635967407_9033028732792602624_n.jpg?stp=c0.242.1080.1080a_dst-jpg_s851x315&_nc_cat=102&ccb=1-7&_nc_sid=da31f3&_nc_ohc=goasOyolqdEAX-6YljJ&_nc_ht=scontent.fbom12-1.fna&oh=00_AfDOiIPGav8cCcjUF12EcC5HqVX1ztLe29_PSGamW6IL4w&oe=64903B19"
                             alt="" />
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -173,26 +173,75 @@
                     showImage.innerHTML = userImage;
                     showBio.innerHTML = userBio;
                     logoutswitch.innerHTML = logout;
+                     // *********Add post********
+                // var displayImage = document.getElementById("postImage");
+                // var postImage = "";
+                // var displayName = document.getElementById("postName");
+                // var postName = "";
+                // var displayCaption = document.getElementById("postCaption");
+                // var postCaption = "";
+
+                // var postBackend = JSON.parse(localStorage.getItem("posts"));
+                // for (var i = 0; i < postBackend.length; i++) {
+                //     // postImage += `<div class="postImage"><img src="${postBackend[i].postImage}"/></div>`;
+                //     postName += `<div class="userProfilePost">
+                //         <img src="${postBackend[i].postImage}" alt=""/>
+                //     </div>`;
+                //     // postCaption += `<p>${postBackend[i].postCaption}</p>`;
+                // }
+                // displayName.innerHTML = postName;
+
+                    var instagram_userData = JSON.parse(localStorage.getItem("instaUsers"));
+                    for(var i=0;i<instagram_userData.length;i++){
+                        if(currentUser.iEmail == instagram_userData[i].iEmail){
+                            currentUser.iPosts = instagram_userData[i].iPosts;
+                        }
+                    }
+
+                    localStorage.setItem("instaCurrentUser", JSON.stringify(currentUser));
+                    
+
+
+                    //profile page display post
+
+                    var profilePostEdit = document.getElementById("postName");
+                    var profilePostEditString = ""
+                    var iPostCurrentUser = currentUser.iPosts;
+
+                    for(var i=0;i<iPostCurrentUser.length;i++){
+                        profilePostEditString += `<div class="userProfilePost">
+                        <img src="${iPostCurrentUser[i].postImage}"
+                            alt="" />
+                    </div>`;
+                    }
+
+                    profilePostEdit.innerHTML = profilePostEditString;
+
+
+
+
+
+
                 } else {
                     alert("You've Logged out.");
                 }
                 // *********Add post********
                 // var displayImage = document.getElementById("postImage");
                 // var postImage = "";
-                var displayName = document.getElementById("postName");
-                var postName = "";
+                // var displayName = document.getElementById("postName");
+                // var postName = "";
                 // var displayCaption = document.getElementById("postCaption");
                 // var postCaption = "";
 
-                var postBackend = JSON.parse(localStorage.getItem("posts"));
-                for (var i = 0; i < postBackend.length; i++) {
-                    // postImage += `<div class="postImage"><img src="${postBackend[i].postImage}"/></div>`;
-                    postName += `<div class="userProfilePost">
-                        <img src="${postBackend[i].postImage}" alt=""/>
-                    </div>`;
-                    // postCaption += `<p>${postBackend[i].postCaption}</p>`;
-                }
-                displayName.innerHTML = postName;
+                // var postBackend = JSON.parse(localStorage.getItem("posts"));
+                // for (var i = 0; i < postBackend.length; i++) {
+                //     // postImage += `<div class="postImage"><img src="${postBackend[i].postImage}"/></div>`;
+                //     postName += `<div class="userProfilePost">
+                //         <img src="${postBackend[i].postImage}" alt=""/>
+                //     </div>`;
+                //     // postCaption += `<p>${postBackend[i].postCaption}</p>`;
+                // }
+                // displayName.innerHTML = postName;
 
                 // *********Add Story********
 
@@ -212,24 +261,12 @@
 
                 // }
                 // displayStoryName.innerHTML = storyName;
+              
+                
 
-                var insta_currentUser = JSON.parse(localStorage.getItem("instaCurrentUser"));
-                var insta_userInfo = JSON.parse(localStorage.getItem("instaUsers"));
 
-                let instaPost = JSON.parse(localStorage.getItem("posts"));
-                for (var i = 0; i < insta_userInfo.length; i++) {
-                    if (insta_currentUser.iEmail == insta_userInfo[i].iEmail) {
-                        if (insta_userInfo[i].iPost == undefined) {
-                            insta_userInfo[i].iPost = [instaPost[i]];
-                            // insta_currentUser.iPost = [instaPost[i]];
-                        } else {
-                            insta_userInfo[i].iPost.push(instaPost[i]);
-                            // insta_currentUser.iPost.push(instaPost[i]);
-                        }
-                    }
-                }
-                localStorage.setItem("instaUsers", JSON.stringify(insta_userInfo));
-                localStorage.setItem("instaCurrentUser", JSON.stringify(insta_currentUser));
+
+
             }
 
             // Search Bar & Toggle

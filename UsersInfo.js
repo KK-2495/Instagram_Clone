@@ -5,13 +5,13 @@ function register(event) {
   var name = document.getElementById("name").value;
   var password = document.getElementById("password").value;
   var confirmPassword = document.getElementById("confirmPassword").value;
-  var iStory = [];
-  var iPost = [];
+  // var iStory = [];
+  // var iPost = [];
 
   if (email && name && password && confirmPassword) {
     if (password.length >= 8 && confirmPassword.length >= 8) {
       if (password === confirmPassword) {
-        var usersInfo = { iEmail: email, iName: name, iPass: password, iConfirmPassword: confirmPassword,iPost };
+        var usersInfo = { iEmail: email, iName: name, iPass: password, iConfirmPassword: confirmPassword };
         var iUsers = JSON.parse(localStorage.getItem("instaUsers")) || [];
         var flag = false;
         for (var i = 0; i < iUsers.length; i++) {

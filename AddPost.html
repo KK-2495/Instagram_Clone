@@ -5,18 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add a Post</title>
+    <link rel="stylesheet" href="./AddPost.css">
 </head>
 <body>
-    <h2>Add your Post here</h2>
-    <form onsubmit="addPost(event)">
-        <label>Poster Name</label><br />
-        <input type="text" id="postName" /><br />
-        <label>Post Caption</label><br />
-        <input type="text" id="postCaption" /><br />
-        <label>Post Image url</label><br />
-        <input type="text" id="postImage" /><br />
-        <input type="submit" /><br />
-    </form>
+    <div class="screen">
+        <h2>Add your Post here</h2>
+        <form onsubmit="addPost(event)">
+            <label>Poster Name</label><br />
+            <input type="text" id="postName" /><br />
+            <label>Post Caption</label><br />
+            <input type="text" id="postCaption" /><br />
+            <label>Post Image url</label><br />
+            <input type="text" id="postImage" /><br />
+            <input type="submit" /><br />
+        </form>
+    </div>
     <script>
         function addPost(event){
             event.preventDefault();
@@ -25,11 +28,20 @@
             var postImage = document.getElementById("postImage").value;
             
             var post = { postName, postCaption, postImage };
-            var addPost = JSON.parse(localStorage.getItem("posts")) || [];
-            addPost.push(post);
-
-            localStorage.setItem("posts",JSON.stringify(addPost));
-
+            var insta_Users = JSON.parse(localStorage.getItem("instaUsers"));
+            var insta_currentUsers = JSON.parse(localStorage.getItem("instaCurrentUser"));
+            var instaPost = [];
+            for(var i=0; i<insta_Users.length; i++){
+                if(insta_Users[i].iEmail == insta_currentUsers.iEmail){
+                    if(insta_Users[i].iPosts == undefined){
+                        insta_Users[i].iPosts = [post];
+                    }else{
+                        insta_Users[i].iPosts.push(post);
+                    }
+                }
+            }
+            localStorage.setItem("instaUsers",JSON.stringify(insta_Users));
+            
             alert("Post Added Succesfully");
         }
     </script>
