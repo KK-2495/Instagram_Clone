@@ -11,8 +11,8 @@
     <div class="screen">
         <h2>Add your Post here</h2>
         <form onsubmit="addPost(event)">
-            <label>Poster Name</label><br />
-            <input type="text" id="postName" /><br />
+            <!-- <label>Poster Name</label><br />
+            <input type="text" id="postName" /><br /> -->
             <label>Post Caption</label><br />
             <input type="text" id="postCaption" /><br />
             <label>Post Image url</label><br />
@@ -23,13 +23,13 @@
     <script>
         function addPost(event){
             event.preventDefault();
-            var postName = document.getElementById("postName").value;
+            // var postName = document.getElementById("postName").value;
             var postCaption = document.getElementById("postCaption").value;
             var postImage = document.getElementById("postImage").value;
             
-            var post = { postName, postCaption, postImage };
             var insta_Users = JSON.parse(localStorage.getItem("instaUsers"));
             var insta_currentUsers = JSON.parse(localStorage.getItem("instaCurrentUser"));
+            var post = { postName:insta_currentUsers.iName, postCaption, postImage };
             var instaPost = [];
             for(var i=0; i<insta_Users.length; i++){
                 if(insta_Users[i].iEmail == insta_currentUsers.iEmail){

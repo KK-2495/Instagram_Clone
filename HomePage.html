@@ -197,18 +197,23 @@
                 // var displayImage = document.getElementById("postImage");
                 // var postImage = "";
                 var displayName = document.getElementById("postName");
-                var postName = "";
+                var uploadInstaPost = "";
                 // var displayCaption = document.getElementById("postCaption");
                 // var postCaption = "";
-
-                var postBackend = JSON.parse(localStorage.getItem("posts"));
-                for (var i = 0; i < postBackend.length; i++) {
-                    // postImage += `<div class="postImage"><img src="${postBackend[i].postImage}"/></div>`;
-                    postName += `<div class="post"><div class="posterName">
+                let insta_userData = JSON.parse(localStorage.getItem("instaUsers"));
+                let uploadPost = [];
+                for (let i=0;i<insta_userData.length; i++){
+                    if(currentUser.iEmail == insta_userData[i].iEmail){
+                        uploadPost = insta_userData[i].iPosts;
+                    }
+                }
+                for (var i = 0; i < uploadPost.length; i++) {
+                    // postImage += `<div class="postImage"><img src="${uploadPost[i].postImage}"/></div>`;
+                    uploadInstaPost += `<div class="post"><div class="posterName">
                             <div class="posterImage">
                                 <i class="fa-regular fa-user"></i>
                                 <div class="posterInfo">
-                                    <p>${postBackend[i].postName}</p>
+                                    <p>${uploadPost[i].postName}</p>
                                     <small>location</small>
                                 </div>
                             </div>
@@ -217,7 +222,7 @@
                             </div>
                         </div>
                         <div class="postImage">
-                            <img src="${postBackend[i].postImage}"
+                            <img src="${uploadPost[i].postImage}"
                                 alt="posts" />
                         </div>
                         <div class="postLikes">
@@ -229,8 +234,8 @@
                             <div class="save"><i class="fa-regular fa-bookmark"></i></div>
                         </div>
                         <div class="postCaptions">
-                            <b>${postBackend[i].postName}</b>
-                            <p>${postBackend[i].postCaption}</p>
+                            <b>${uploadPost[i].postName}</b>
+                            <p>${uploadPost[i].postCaption}</p>
                         </div>
                         <div class="viewComment">
                             <b>View 3 comments</b>
@@ -240,9 +245,9 @@
                             <input type="text" placeholder="Add a Comment" />
                             <b>Post</b>
                         </div></div>`;
-                    // postCaption += `<p>${postBackend[i].postCaption}</p>`;
+                    // postCaption += `<p>${uploadPost[i].postCaption}</p>`;
                 }
-                displayName.innerHTML = postName;
+                displayName.innerHTML = uploadInstaPost;
 
                 // *********Add Story********
 
@@ -314,7 +319,9 @@
                     }
                     searchResult.innerHTML = showResult;
                 } else {
-                    alert("No Matches found");
+                    // alert("No Matches found");
+                    var noResult = `No users found`;
+                    searchResult.innerHTML = noResult;
                 }
 
             }
@@ -323,7 +330,8 @@
             }
             function logout() {
                 localStorage.removeItem("instaCurrentUser");
-                window.location.reload();
+                // window.location.reload();
+                window.location.href = `./Login.html`;
             }
         </script>
     </body>

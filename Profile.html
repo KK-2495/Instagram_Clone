@@ -218,10 +218,6 @@
                     profilePostEdit.innerHTML = profilePostEditString;
 
 
-
-
-
-
                 } else {
                     alert("You've Logged out.");
                 }
@@ -286,7 +282,8 @@
             }
             function logout() {
                 localStorage.removeItem("instaCurrentUser");
-                window.location.reload();
+                // window.location.reload();
+                window.location.href = `./Login.html`;
             }
         </script>
     </body>
