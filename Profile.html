@@ -59,16 +59,19 @@
                         <div>
                             <h1>Search</h1>
                             <form onsubmit="SearchUser(event)">
-                                <input type="search" placeholder="Search" id="Search_users" />
+                                <input type="text" placeholder="Search" id="searchUsers" />
+                                <input type="submit">
                             </form>
                         </div>
-                        <div id="search_result">
-                            <div id="sugg-head" class="sugg_div">
-                                <img src="" />
-                                <p></p>
-                            </div>
-                            <div id="no_display">
-                                <p></p>
+                        <div id="searchResult" class="searchResult">
+                            <div class="userList">
+                                <div class="userListName">
+                                <i class="fa-regular fa-face-smile"></i>
+                                <b>Krish</b>
+                                </div>
+                                <div class="userListFollow">
+                                    <p>Follow</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -89,15 +92,15 @@
                         <div id="logout"></div>
                         <div class="followers">
                             <div>
-                                <b>101</b>
+                                <b id="nOfPost">0</b>
                                 <p>Posts</p>
                             </div>
                             <div>
-                                <b>364</b>
+                                <b>0</b>
                                 <p>Followers</p>
                             </div>
                             <div>
-                                <b>300</b>
+                                <b id="nOfFollowing">0</b>
                                 <p>Following</p>
                             </div>
                         </div>
@@ -163,6 +166,8 @@
                     var showImage = document.getElementById("userImage");
                     var showBio = document.getElementById("userBio");
                     var logoutswitch = document.getElementById("logout");
+                    var nOfPost = document.getElementById("nOfPost");
+                    let nOfFollowing = document.getElementById("nOfFollowing");
                     var activeUserName = `<h4>${currentUser.iName}</h4>`;
                     var activeUserName1 = `<b>${currentUser.iName}</b>`;
                     var userImage = `<div><img src="${currentUser.iImage}"/></div>`;
@@ -205,63 +210,25 @@
                     //profile page display post
 
                     var profilePostEdit = document.getElementById("postName");
-                    var profilePostEditString = ""
+                    var profilePostEditString = [];
                     var iPostCurrentUser = currentUser.iPosts;
 
                     for(var i=0;i<iPostCurrentUser.length;i++){
                         profilePostEditString += `<div class="userProfilePost">
-                        <img src="${iPostCurrentUser[i].postImage}"
+                            <img src="${iPostCurrentUser[i].postImage}"
                             alt="" />
-                    </div>`;
-                    }
-
+                            </div>`;
+                        }
+                        
+                    let sum = iPostCurrentUser.length;
+                    // console.log(sum);
+                    nOfPost.innerHTML = `<b>${sum}</b>`;
+                    nOfFollowing.innerHTML = currentUser.iFollowing;
                     profilePostEdit.innerHTML = profilePostEditString;
-
 
                 } else {
                     alert("You've Logged out.");
                 }
-                // *********Add post********
-                // var displayImage = document.getElementById("postImage");
-                // var postImage = "";
-                // var displayName = document.getElementById("postName");
-                // var postName = "";
-                // var displayCaption = document.getElementById("postCaption");
-                // var postCaption = "";
-
-                // var postBackend = JSON.parse(localStorage.getItem("posts"));
-                // for (var i = 0; i < postBackend.length; i++) {
-                //     // postImage += `<div class="postImage"><img src="${postBackend[i].postImage}"/></div>`;
-                //     postName += `<div class="userProfilePost">
-                //         <img src="${postBackend[i].postImage}" alt=""/>
-                //     </div>`;
-                //     // postCaption += `<p>${postBackend[i].postCaption}</p>`;
-                // }
-                // displayName.innerHTML = postName;
-
-                // *********Add Story********
-
-                // var displayStoryName = document.getElementById("storyName");
-                // var storyName = "";
-
-
-                // var storyBackend = JSON.parse(localStorage.getItem("instaStory"));
-                // for (var i = 0; i < storyBackend.length; i++) {
-                //     storyName += `
-                //     <div class="stories">
-                //                 <div>
-                //             <img src="${storyBackend[i].storyImage}" alt="story" />
-                //             </div>
-                //             <p>${storyBackend[i].storyName}</p></div>
-                //         `;
-
-                // }
-                // displayStoryName.innerHTML = storyName;
-              
-                
-
-
-
 
             }
 
@@ -274,6 +241,74 @@
                     get.style.display = "none";
                 }
             }
+            function SearchUser(event) {
+                event.preventDefault();
+
+                var usersList = document.getElementById("searchUsers").value;
+
+                if (usersList) {
+                    var searchResult = document.getElementById("searchResult");
+                    var instaUsersList = JSON.parse(localStorage.getItem("instaUsers"));
+                    var showResult = "";
+                    let emptyArray = [];
+                    for (var i = 0; i < instaUsersList.length; i++) {
+                        if (usersList == instaUsersList[i].iName) {
+                            showResult = `
+                        <div class="userList">
+                            <div class="userListName">
+                            <i class="fa-regular fa-face-smile"></i>
+                            <b>${instaUsersList[i].iName}</b>
+                            </div>
+                            <div onclick="follow()" class="userListFollow">
+                                <p>Follow</p>
+                            </div>
+                    </div>`;
+                    instaUsersList[i].iFollower = 0;
+                        emptyArray = instaUsersList[i];
+                        console.log(emptyArray);
+                        }
+                    }
+                //     for (let i=0; i<instagram_userData.length; i++){
+                //     if(currentUser.iEmail == instagram_userData[i].iEmail){
+                //         instagram_userData[i].iFollower = 0;
+                //     }
+                // }
+                // for (let i=0; i<instagram_userData.length; i++){
+                //     if(currentUser.iEmail == instagram_userData[i].iEmail){
+                //         instagram_userData[i].iFollowing++;
+                //     }
+                // }
+                    searchResult.innerHTML = showResult;
+                } else {
+                    // alert("No Matches found");
+                    var noResult = `No users found`;
+                    searchResult.innerHTML = noResult;
+                }
+
+            }
+            function follow(){
+                let currentUser = JSON.parse(localStorage.getItem("instaCurrentUser"));
+                let userdata = JSON.parse(localStorage.getItem("instaUsers"));
+
+                // let instaFollowing = 0;
+                // let instaFollower = 0;
+
+                for (let i=0; i<userdata.length; i++){
+                    if(currentUser.iEmail == userdata[i].iEmail){
+                        userdata[i].iFollowing = 0;
+                    }
+                }
+                for (let i=0; i<userdata.length; i++){
+                    if(currentUser.iEmail == userdata[i].iEmail){
+                        userdata[i].iFollowing++;
+                    }
+                }
+
+                localStorage.setItem("instaUsers",JSON.stringify(userdata));
+                localStorage.setItem("instaCurrentUser",JSON.stringify(currentUser));
+                alert("Following");
+
+            } 
             function redirectEditProfile(){
                 window.location.href = `./editProfile.html`;
             }
