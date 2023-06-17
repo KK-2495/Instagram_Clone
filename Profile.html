@@ -206,7 +206,6 @@
                     localStorage.setItem("instaCurrentUser", JSON.stringify(currentUser));
                     
 
-
                     //profile page display post
 
                     var profilePostEdit = document.getElementById("postName");
@@ -249,8 +248,8 @@
                 if (usersList) {
                     var searchResult = document.getElementById("searchResult");
                     var instaUsersList = JSON.parse(localStorage.getItem("instaUsers"));
+                    let currentUser = JSON.parse(localStorage.getItem("instaCurrentUser"));
                     var showResult = "";
-                    let emptyArray = [];
                     for (var i = 0; i < instaUsersList.length; i++) {
                         if (usersList == instaUsersList[i].iName) {
                             showResult = `
@@ -263,21 +262,17 @@
                                 <p>Follow</p>
                             </div>
                     </div>`;
-                    instaUsersList[i].iFollower = 0;
-                        emptyArray = instaUsersList[i];
-                        console.log(emptyArray);
+
                         }
                     }
-                //     for (let i=0; i<instagram_userData.length; i++){
-                //     if(currentUser.iEmail == instagram_userData[i].iEmail){
-                //         instagram_userData[i].iFollower = 0;
-                //     }
-                // }
-                // for (let i=0; i<instagram_userData.length; i++){
-                //     if(currentUser.iEmail == instagram_userData[i].iEmail){
-                //         instagram_userData[i].iFollowing++;
-                //     }
-                // }
+
+                    for (let i=0; i<instaUsersList.length; i++){
+                    if(currentUser.iEmail == instaUsersList[i].iEmail){
+                        instaUsersList[i].iFollowing = 0;
+                        instaUsersList[i].iFollowers = 0;
+                    }
+                }
+
                     searchResult.innerHTML = showResult;
                 } else {
                     // alert("No Matches found");
@@ -289,22 +284,24 @@
             function follow(){
                 let currentUser = JSON.parse(localStorage.getItem("instaCurrentUser"));
                 let userdata = JSON.parse(localStorage.getItem("instaUsers"));
-
+                let userList = document.getElementById("searchUsers").value;
                 // let instaFollowing = 0;
                 // let instaFollower = 0;
 
-                for (let i=0; i<userdata.length; i++){
-                    if(currentUser.iEmail == userdata[i].iEmail){
-                        userdata[i].iFollowing = 0;
-                    }
-                }
+
                 for (let i=0; i<userdata.length; i++){
                     if(currentUser.iEmail == userdata[i].iEmail){
                         userdata[i].iFollowing++;
                     }
                 }
 
-                localStorage.setItem("instaUsers",JSON.stringify(userdata));
+                for(let i=0;i<userdata.length;i++){
+                    if(userList == userdata[i].iName){
+                        userdata[i].iFollowers++;
+                    }
+                }
+
+                localStorage.setItem("instaUsers", JSON.stringify(userdata));
                 localStorage.setItem("instaCurrentUser",JSON.stringify(currentUser));
                 alert("Following");
 
